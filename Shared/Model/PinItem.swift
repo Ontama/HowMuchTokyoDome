@@ -6,6 +6,7 @@
 //
 
 import CoreLocation
+import Foundation
 
 struct PinItem: Identifiable {
     let id = UUID()
