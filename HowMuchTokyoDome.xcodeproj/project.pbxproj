@@ -7,16 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EAC3545927D5BB94009E192B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3545827D5BB94009E192B /* Location.swift */; };
+		EAC3545A27D5BB94009E192B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3545827D5BB94009E192B /* Location.swift */; };
 		EAD1905827D5B5A4001CF9B5 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1905727D5B5A4001CF9B5 /* Tests_iOS.swift */; };
 		EAD1905A27D5B5A4001CF9B5 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1905927D5B5A4001CF9B5 /* Tests_iOSLaunchTests.swift */; };
 		EAD1906427D5B5A4001CF9B5 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1906327D5B5A4001CF9B5 /* Tests_macOS.swift */; };
 		EAD1906627D5B5A4001CF9B5 /* Tests_macOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1906527D5B5A4001CF9B5 /* Tests_macOSLaunchTests.swift */; };
 		EAD1906727D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1903F27D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift */; };
 		EAD1906827D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1903F27D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift */; };
-		EAD1906927D5B5A4001CF9B5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1904027D5B5A4001CF9B5 /* ContentView.swift */; };
-		EAD1906A27D5B5A4001CF9B5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1904027D5B5A4001CF9B5 /* ContentView.swift */; };
 		EAD1906B27D5B5A4001CF9B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD1904127D5B5A4001CF9B5 /* Assets.xcassets */; };
 		EAD1906C27D5B5A4001CF9B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD1904127D5B5A4001CF9B5 /* Assets.xcassets */; };
+		EAD1907C27D5B608001CF9B5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1907B27D5B608001CF9B5 /* MainView.swift */; };
+		EAD1907D27D5B608001CF9B5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1907B27D5B608001CF9B5 /* MainView.swift */; };
+		EAD1908227D5B64C001CF9B5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1908127D5B64B001CF9B5 /* MapView.swift */; };
+		EAD1908527D5BA62001CF9B5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD1908427D5BA62001CF9B5 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EAC3545727D5BAFE009E192B /* HowMuchTokyoDomeInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = HowMuchTokyoDomeInfo.plist; sourceTree = "<group>"; };
+		EAC3545827D5BB94009E192B /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		EAD1903F27D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowMuchTokyoDomeApp.swift; sourceTree = "<group>"; };
-		EAD1904027D5B5A4001CF9B5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EAD1904127D5B5A4001CF9B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAD1904627D5B5A4001CF9B5 /* HowMuchTokyoDome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HowMuchTokyoDome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD1904C27D5B5A4001CF9B5 /* HowMuchTokyoDome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HowMuchTokyoDome.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +54,9 @@
 		EAD1905F27D5B5A4001CF9B5 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD1906327D5B5A4001CF9B5 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		EAD1906527D5B5A4001CF9B5 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		EAD1907B27D5B608001CF9B5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		EAD1908127D5B64B001CF9B5 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		EAD1908427D5BA62001CF9B5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.2.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAD1908527D5BA62001CF9B5 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,11 +95,13 @@
 		EAD1903927D5B5A3001CF9B5 = {
 			isa = PBXGroup;
 			children = (
+				EAC3545727D5BAFE009E192B /* HowMuchTokyoDomeInfo.plist */,
 				EAD1903E27D5B5A4001CF9B5 /* Shared */,
 				EAD1904D27D5B5A4001CF9B5 /* macOS */,
 				EAD1905627D5B5A4001CF9B5 /* Tests iOS */,
 				EAD1906227D5B5A4001CF9B5 /* Tests macOS */,
 				EAD1904727D5B5A4001CF9B5 /* Products */,
+				EAD1908327D5BA62001CF9B5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,7 +109,9 @@
 			isa = PBXGroup;
 			children = (
 				EAD1903F27D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift */,
-				EAD1904027D5B5A4001CF9B5 /* ContentView.swift */,
+				EAD1907B27D5B608001CF9B5 /* MainView.swift */,
+				EAD1908127D5B64B001CF9B5 /* MapView.swift */,
+				EAC3545827D5BB94009E192B /* Location.swift */,
 				EAD1904127D5B5A4001CF9B5 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -139,6 +152,14 @@
 				EAD1906527D5B5A4001CF9B5 /* Tests_macOSLaunchTests.swift */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		EAD1908327D5BA62001CF9B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EAD1908427D5BA62001CF9B5 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,7 +320,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAD1906927D5B5A4001CF9B5 /* ContentView.swift in Sources */,
+				EAD1907C27D5B608001CF9B5 /* MainView.swift in Sources */,
+				EAD1908227D5B64C001CF9B5 /* MapView.swift in Sources */,
+				EAC3545927D5BB94009E192B /* Location.swift in Sources */,
 				EAD1906727D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,7 +331,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAD1906A27D5B5A4001CF9B5 /* ContentView.swift in Sources */,
+				EAD1907D27D5B608001CF9B5 /* MainView.swift in Sources */,
+				EAC3545A27D5BB94009E192B /* Location.swift in Sources */,
 				EAD1906827D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,6 +491,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HowMuchTokyoDomeInfo.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "このアプリケーションは位置情報を使用します";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -496,6 +524,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HowMuchTokyoDomeInfo.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "このアプリケーションは位置情報を使用します";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
