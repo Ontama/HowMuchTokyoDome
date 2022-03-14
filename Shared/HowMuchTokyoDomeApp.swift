@@ -11,10 +11,10 @@ import CoreLocation
 @main
 struct HowMuchTokyoDomeApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
+    @StateObject var viewModel = ViewModel(model: LocationDataSource())
     var body: some Scene {
         WindowGroup {
-            // MainView
+            MainView(viewModel: viewModel)
         }
     }
 }

@@ -16,9 +16,7 @@ struct PinItem: Identifiable {
 struct MapView: View {
     @State private var region = MKCoordinateRegion() // 座標領域
     @State private var userTrackingMode: MapUserTrackingMode = .none
-    var coordinate: CLLocationCoordinate2D? // 表示領域の中心位置
-    var latitude: Double // 緯度
-    var longitude: Double // 経度
+    @ObservedObject var viewModel: ViewModel
     
     var body: some View {
         Map(coordinateRegion: $region,
@@ -26,14 +24,16 @@ struct MapView: View {
             showsUserLocation: true,
             userTrackingMode: $userTrackingMode,
             annotationItems: [
-                PinItem(coordinate: .init(latitude: latitude, longitude: longitude))
+                PinItem(coordinate: .init(latitude: viewModel.latitude, longitude: viewModel.longitude))
             ],
             annotationContent: { item in
             MapMarker(coordinate: item.coordinate)
         })
             .onAppear(perform: {
-                setRegion(coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+                setRegion(coordinate: CLLocationCoordinate2D(latitude: viewModel.latitude, longitude: viewModel.longitude))
+                
             })
+        
     }
     
     // 引数で取得した緯度経度を使って動的に表示領域の中心位置と、縮尺を決める
