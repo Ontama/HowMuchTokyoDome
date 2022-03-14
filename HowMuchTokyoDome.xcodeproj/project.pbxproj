@@ -15,6 +15,8 @@
 		EAC3554A27DEF2B4009E192B /* LocationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3554827DEF2B4009E192B /* LocationDataSource.swift */; };
 		EAC3554E27DEF3D4009E192B /* CLAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3554D27DEF3D4009E192B /* CLAuthorizationStatus.swift */; };
 		EAC3554F27DEF3D4009E192B /* CLAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3554D27DEF3D4009E192B /* CLAuthorizationStatus.swift */; };
+		EAC3555527DEFA6A009E192B /* PinItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3555427DEFA6A009E192B /* PinItem.swift */; };
+		EAC3555627DEFA6A009E192B /* PinItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3555427DEFA6A009E192B /* PinItem.swift */; };
 		EAD1905827D5B5A4001CF9B5 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1905727D5B5A4001CF9B5 /* Tests_iOS.swift */; };
 		EAD1905A27D5B5A4001CF9B5 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1905927D5B5A4001CF9B5 /* Tests_iOSLaunchTests.swift */; };
 		EAD1906427D5B5A4001CF9B5 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1906327D5B5A4001CF9B5 /* Tests_macOS.swift */; };
@@ -52,6 +54,7 @@
 		EAC3554527DEF295009E192B /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		EAC3554827DEF2B4009E192B /* LocationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataSource.swift; sourceTree = "<group>"; };
 		EAC3554D27DEF3D4009E192B /* CLAuthorizationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLAuthorizationStatus.swift; sourceTree = "<group>"; };
+		EAC3555427DEFA6A009E192B /* PinItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinItem.swift; sourceTree = "<group>"; };
 		EAD1903F27D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowMuchTokyoDomeApp.swift; sourceTree = "<group>"; };
 		EAD1904127D5B5A4001CF9B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAD1904627D5B5A4001CF9B5 /* HowMuchTokyoDome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HowMuchTokyoDome.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				EAC3554827DEF2B4009E192B /* LocationDataSource.swift */,
+				EAC3555427DEFA6A009E192B /* PinItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -361,6 +365,7 @@
 				EAD1908227D5B64C001CF9B5 /* MapView.swift in Sources */,
 				EAC3545927D5BB94009E192B /* Location.swift in Sources */,
 				EAD1906727D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift in Sources */,
+				EAC3555527DEFA6A009E192B /* PinItem.swift in Sources */,
 				EAC3554927DEF2B4009E192B /* LocationDataSource.swift in Sources */,
 				EAC3554E27DEF3D4009E192B /* CLAuthorizationStatus.swift in Sources */,
 			);
@@ -375,6 +380,7 @@
 				EAC3545A27D5BB94009E192B /* Location.swift in Sources */,
 				EAD1906827D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift in Sources */,
 				EAC3554F27DEF3D4009E192B /* CLAuthorizationStatus.swift in Sources */,
+				EAC3555627DEFA6A009E192B /* PinItem.swift in Sources */,
 				EAC3554727DEF295009E192B /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

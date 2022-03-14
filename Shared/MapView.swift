@@ -7,11 +7,7 @@
 
 import SwiftUI
 import MapKit
-
-struct PinItem: Identifiable {
-    let id = UUID()
-    let coordinate: CLLocationCoordinate2D
-}
+import CoreLocation
 
 struct MapView: View {
     @State private var region = MKCoordinateRegion() // 座標領域
