@@ -7,12 +7,14 @@
 
 import CoreLocation
 import Combine
+import SwiftUI
 
 final class ViewModel: NSObject, ObservableObject {
     let model: LocationDataSource
     var cancellables = Set<AnyCancellable>()
     @Published var authorizationStatus = CLAuthorizationStatus.notDetermined
     @Published var location: CLLocation = .init()
+    let currentChangeSubject = PassthroughSubject<Void, Never>()
 
     var latitude: CLLocationDegrees {
         location.coordinate.latitude
@@ -40,6 +42,7 @@ final class ViewModel: NSObject, ObservableObject {
             guard let self = self else { return }
             if let last = locations.last {
                 self.location = last
+                
             }
         }.store(in: &cancellables)
     }
@@ -54,5 +57,9 @@ final class ViewModel: NSObject, ObservableObject {
 
     func stopTracking() {
         model.stopTracking()
+    }
+    
+    func changeCurrentLocation() {
+        currentChangeSubject.send()
     }
 }

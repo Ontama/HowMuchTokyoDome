@@ -18,9 +18,13 @@ struct MainView: View {
                 }
                 Button("start") {
                     viewModel.startTracking()
+                    viewModel.changeCurrentLocation()
                 }
                 Button("stop") {
                     viewModel.stopTracking()
+                }
+                Button("現在地") {
+                    viewModel.changeCurrentLocation()
                 }
             }
             Text(viewModel.authorizationStatus.description)
@@ -35,10 +39,4 @@ struct MainView: View {
     }
 }
 
-struct MainView_Previews: PreviewProvider {
-    static let viewModel = ViewModel(model: LocationDataSource())
-    static var previews: some View {
-        MainView(viewModel: viewModel)
-    }
-}
 
