@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA0DDF5427EC44FB008FB0D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0DDF5327EC44FB008FB0D5 /* AppDelegate.swift */; };
+		EA0DDF5527EC44FB008FB0D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0DDF5327EC44FB008FB0D5 /* AppDelegate.swift */; };
 		EAC3554627DEF295009E192B /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3554527DEF295009E192B /* MapViewModel.swift */; };
 		EAC3554727DEF295009E192B /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3554527DEF295009E192B /* MapViewModel.swift */; };
 		EAC3554927DEF2B4009E192B /* LocationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3554827DEF2B4009E192B /* LocationDataSource.swift */; };
@@ -47,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EA0DDF5327EC44FB008FB0D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAC3545727D5BAFE009E192B /* HowMuchTokyoDomeInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = HowMuchTokyoDomeInfo.plist; sourceTree = "<group>"; };
 		EAC3554527DEF295009E192B /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		EAC3554827DEF2B4009E192B /* LocationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataSource.swift; sourceTree = "<group>"; };
@@ -101,6 +104,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA0DDF5627EC458C008FB0D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EAD1907B27D5B608001CF9B5 /* MainView.swift */,
+				EAD1908127D5B64B001CF9B5 /* MapView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		EAC3554B27DEF325009E192B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,8 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				EAD1903F27D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift */,
-				EAD1907B27D5B608001CF9B5 /* MainView.swift */,
-				EAD1908127D5B64B001CF9B5 /* MapView.swift */,
+				EA0DDF5327EC44FB008FB0D5 /* AppDelegate.swift */,
+				EA0DDF5627EC458C008FB0D5 /* View */,
 				EAC3554C27DEF35D009E192B /* ViewModel */,
 				EAC3554B27DEF325009E192B /* Model */,
 				EAC3555027DEF3DA009E192B /* Extensions */,
@@ -356,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA0DDF5427EC44FB008FB0D5 /* AppDelegate.swift in Sources */,
 				EAD1907C27D5B608001CF9B5 /* MainView.swift in Sources */,
 				EAC3554627DEF295009E192B /* MapViewModel.swift in Sources */,
 				EAD1908227D5B64C001CF9B5 /* MapView.swift in Sources */,
@@ -374,6 +387,7 @@
 				EAC3554A27DEF2B4009E192B /* LocationDataSource.swift in Sources */,
 				EAD1906827D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift in Sources */,
 				EAC3554F27DEF3D4009E192B /* CLAuthorizationStatus.swift in Sources */,
+				EA0DDF5527EC44FB008FB0D5 /* AppDelegate.swift in Sources */,
 				EAC3555627DEFA6A009E192B /* PinItem.swift in Sources */,
 				EAC3554727DEF295009E192B /* MapViewModel.swift in Sources */,
 			);

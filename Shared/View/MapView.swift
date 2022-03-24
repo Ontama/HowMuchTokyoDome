@@ -37,7 +37,6 @@ struct MapView: View {
 //            .onReceive(viewModel.$location) { locations in
 //                updateReigion(coordinate: CLLocationCoordinate2D(latitude: viewModel.latitude, longitude: viewModel.longitude))
 //            }
-            
     }
     
     // 引数で取得した緯度経度を使って動的に表示領域の中心位置と、縮尺を決める
