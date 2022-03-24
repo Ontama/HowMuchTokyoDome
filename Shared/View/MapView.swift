@@ -27,22 +27,21 @@ struct MapView: View {
             MapMarker(coordinate: item.coordinate)
         })
             .onAppear(perform: {
+                viewModel.startTracking()
                 updateReigion(coordinate: CLLocationCoordinate2D(latitude: viewModel.latitude, longitude: viewModel.longitude))
-                
             })
             .onReceive(viewModel.currentChangeSubject, perform: { locations in
                 updateReigion(coordinate: CLLocationCoordinate2D(latitude: viewModel.latitude, longitude: viewModel.longitude))
             })
-        // 現在地を取得したら現在地を中心にする
-//            .onReceive(viewModel.$location) { locations in
-//                updateReigion(coordinate: CLLocationCoordinate2D(latitude: viewModel.latitude, longitude: viewModel.longitude))
-//            }
+         // 現在地を取得したら現在地を中心にする
+            .onReceive(viewModel.$location) { locations in
+                updateReigion(coordinate: CLLocationCoordinate2D(latitude: locations.coordinate.latitude, longitude: locations.coordinate.longitude))
+            }
     }
     
     // 引数で取得した緯度経度を使って動的に表示領域の中心位置と、縮尺を決める
     func updateReigion(coordinate: CLLocationCoordinate2D) {
         region = MKCoordinateRegion(center: coordinate,
-                                    span: span
-        )
+                                    span: span)
     }
 }

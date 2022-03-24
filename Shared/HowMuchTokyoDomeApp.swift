@@ -10,7 +10,6 @@ import CoreLocation
 
 @main
 struct HowMuchTokyoDomeApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var viewModel = ViewModel(model: LocationDataSource())
     var body: some Scene {
         WindowGroup {
@@ -18,8 +17,3 @@ struct HowMuchTokyoDomeApp: App {
         }
     }
 }
-
-class Parameter : ObservableObject {
-    @Published var locationManager = CLLocationManager()
-}
-
