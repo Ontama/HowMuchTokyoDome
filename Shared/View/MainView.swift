@@ -7,35 +7,30 @@
 
 import SwiftUI
 import MapKit
+import CoreLocationUI
 
 struct MainView: View {
     @ObservedObject var viewModel: ViewModel
     var body: some View {
-        VStack(spacing: 16) {
-            HStack(spacing: 16) {
-                Button("request") {
-                    viewModel.requestAuthorization()
-                }
-                Button("start") {
-                    viewModel.startTracking()
-                    viewModel.changeCurrentLocation()
-                }
-                Button("stop") {
-                    viewModel.stopTracking()
-                }
-                Button("現在地") {
-                    viewModel.changeCurrentLocation()
-                }
-            }
-            Text(viewModel.authorizationStatus.description)
-            Text(String(format: "longitude: %f", viewModel.longitude))
-            Text(String(format: "latitude: %f", viewModel.latitude))
+        ZStack(alignment: .topTrailing) {
             MapView(viewModel: viewModel)
+            LocationButton {
+                viewModel.changeCurrentLocation()
+            }
+            .labelStyle(.iconOnly)
+            .cornerRadius(24)
+            .frame(width: 80, height: 80)
         }.onAppear {
             viewModel.activate()
         }.onDisappear {
             viewModel.deactivate()
         }
+    }
+}
+
+struct MainView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainView(viewModel: ViewModel(model: LocationDataSource()))
     }
 }
 
