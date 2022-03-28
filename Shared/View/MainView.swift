@@ -14,12 +14,27 @@ struct MainView: View {
     var body: some View {
         ZStack(alignment: .topTrailing) {
             MapView(viewModel: viewModel)
-            LocationButton {
-                viewModel.changeCurrentLocation()
+            VStack {
+                LocationButton {
+                    viewModel.changeCurrentLocation()
+                }
+                .labelStyle(.iconOnly)
+                .cornerRadius(24)
+                .frame(width: 80, height: 80)
             }
-            .labelStyle(.iconOnly)
-            .cornerRadius(24)
-            .frame(width: 80, height: 80)
+            VStack() {
+                Spacer()
+                Button {
+                    
+                } label: {
+                    Text("大きさを変更する")
+                }
+                .buttonStyle(.borderedProminent)
+                .padding(.bottom, 20)
+            }
+        
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+            
         }.onAppear {
             viewModel.activate()
         }.onDisappear {
