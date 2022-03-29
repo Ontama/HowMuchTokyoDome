@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA26B72427F180E8003BF66C /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA26B72327F180E8003BF66C /* CircleView.swift */; };
 		EAC3554627DEF295009E192B /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3554527DEF295009E192B /* MapViewModel.swift */; };
 		EAC3554727DEF295009E192B /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3554527DEF295009E192B /* MapViewModel.swift */; };
 		EAC3554927DEF2B4009E192B /* LocationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3554827DEF2B4009E192B /* LocationDataSource.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EA26B72327F180E8003BF66C /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		EAC3545727D5BAFE009E192B /* HowMuchTokyoDomeInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = HowMuchTokyoDomeInfo.plist; sourceTree = "<group>"; };
 		EAC3554527DEF295009E192B /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		EAC3554827DEF2B4009E192B /* LocationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataSource.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			children = (
 				EAD1907B27D5B608001CF9B5 /* MainView.swift */,
 				EAD1908127D5B64B001CF9B5 /* MapView.swift */,
+				EA26B72327F180E8003BF66C /* CircleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA26B72427F180E8003BF66C /* CircleView.swift in Sources */,
 				EAD1907C27D5B608001CF9B5 /* MainView.swift in Sources */,
 				EAC3554627DEF295009E192B /* MapViewModel.swift in Sources */,
 				EAD1908227D5B64C001CF9B5 /* MapView.swift in Sources */,

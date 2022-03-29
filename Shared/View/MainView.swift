@@ -22,7 +22,11 @@ struct MainView: View {
                 .cornerRadius(24)
                 .frame(width: 80, height: 80)
             }
-            VStack() {
+            VStack(alignment: .center) {
+                CircleView()
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+            }
+            VStack {
                 Spacer()
                 Button {
                     
