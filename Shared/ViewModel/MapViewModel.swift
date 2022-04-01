@@ -27,39 +27,16 @@ final class MapViewModel: ObservableObject {
     }
     
     private var coordinatePublisher: AnyPublisher<CLLocationCoordinate2D, Never> {
-        
         Publishers.Merge(LocationManager.shared.$initialUserCoordinate, currentLocationCenterButtonTappedCoordinatePublisher)
             .replaceNil(with: CLLocationCoordinate2D(latitude: 2.0, longitude: 2.0))
             .eraseToAnyPublisher()
     }
-    
-    private var cancellableSet: Set<AnyCancellable> = []
-    var cancellable: AnyCancellable?
+    private var cancellableSet = Set<AnyCancellable>()
     
     init() {
-        // This does not result in an update to the view... why not?
-        
-        coordinatePublisher
-            .receive(on: RunLoop.main)
-        //            .handleEvents(receiveSubscription: { (subscription) in
-        //                print("Receive subscription")
-        //            }, receiveOutput: { output in
-        //                print("Received output: \(String(describing: output))")
-        //
-        //            }, receiveCompletion: { _ in
-        //                print("Receive completion")
-        //            }, receiveCancel: {
-        //                print("Receive cancel")
-        //            }, receiveRequest: { demand in
-        //                print("Receive request: \(demand)")
-        //            })
+        self.coordinatePublisher.receive(on: DispatchQueue.main)
             .assign(to: \.mapCenter, on: self)
             .store(in: &cancellableSet)
-        
-        print("cancellableSet \(cancellableSet)")
-        
-        self.cancellable = self.coordinatePublisher.receive(on: DispatchQueue.main)
-            .assign(to: \.mapCenter, on: self)
     }
     
     var latitude: CLLocationDegrees {
