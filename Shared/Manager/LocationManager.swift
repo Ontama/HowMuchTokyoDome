@@ -70,12 +70,6 @@ extension LocationManager: CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        guard let location = locations.first else { return }
-//
-//        DispatchQueue.main.async {
-//            self.location = location
-//            self.geoCode(with: location)
-//        }
         // We are only interested in the user's most recent location.
         guard let location = locations.last else { return }
         // Use the location to update the location manager's published state.

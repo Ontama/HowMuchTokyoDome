@@ -39,7 +39,6 @@ struct MapView: UIViewRepresentable {
     
     class Coordinator: NSObject, MKMapViewDelegate {
         var parent: MapView
-        var subscribers: [AnyCancellable] = []
         
         var changeCurrentLocation: ((CLLocationCoordinate2D) -> Void)?
 
