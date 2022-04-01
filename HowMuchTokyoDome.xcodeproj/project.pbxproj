@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		EA26B72427F180E8003BF66C /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA26B72327F180E8003BF66C /* CircleView.swift */; };
+		EA55EBA727F48515009C3558 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA55EBA627F48515009C3558 /* LocationManager.swift */; };
+		EA55EBA927F54330009C3558 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA55EBA827F54330009C3558 /* AppDelegate.swift */; };
+		EA55EBAD27F6BD5D009C3558 /* CurrentLocationCenterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA55EBAC27F6BD5D009C3558 /* CurrentLocationCenterButton.swift */; };
 		EAC3554627DEF295009E192B /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3554527DEF295009E192B /* MapViewModel.swift */; };
 		EAC3554727DEF295009E192B /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3554527DEF295009E192B /* MapViewModel.swift */; };
-		EAC3554927DEF2B4009E192B /* LocationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3554827DEF2B4009E192B /* LocationDataSource.swift */; };
-		EAC3554A27DEF2B4009E192B /* LocationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3554827DEF2B4009E192B /* LocationDataSource.swift */; };
 		EAC3554E27DEF3D4009E192B /* CLAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3554D27DEF3D4009E192B /* CLAuthorizationStatus.swift */; };
 		EAC3554F27DEF3D4009E192B /* CLAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3554D27DEF3D4009E192B /* CLAuthorizationStatus.swift */; };
 		EAC3555527DEFA6A009E192B /* PinItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3555427DEFA6A009E192B /* PinItem.swift */; };
@@ -49,9 +50,11 @@
 
 /* Begin PBXFileReference section */
 		EA26B72327F180E8003BF66C /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		EA55EBA627F48515009C3558 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		EA55EBA827F54330009C3558 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EA55EBAC27F6BD5D009C3558 /* CurrentLocationCenterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationCenterButton.swift; sourceTree = "<group>"; };
 		EAC3545727D5BAFE009E192B /* HowMuchTokyoDomeInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = HowMuchTokyoDomeInfo.plist; sourceTree = "<group>"; };
 		EAC3554527DEF295009E192B /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
-		EAC3554827DEF2B4009E192B /* LocationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataSource.swift; sourceTree = "<group>"; };
 		EAC3554D27DEF3D4009E192B /* CLAuthorizationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLAuthorizationStatus.swift; sourceTree = "<group>"; };
 		EAC3555427DEFA6A009E192B /* PinItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinItem.swift; sourceTree = "<group>"; };
 		EAD1903F27D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowMuchTokyoDomeApp.swift; sourceTree = "<group>"; };
@@ -109,14 +112,22 @@
 				EAD1907B27D5B608001CF9B5 /* MainView.swift */,
 				EAD1908127D5B64B001CF9B5 /* MapView.swift */,
 				EA26B72327F180E8003BF66C /* CircleView.swift */,
+				EA55EBAC27F6BD5D009C3558 /* CurrentLocationCenterButton.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		EA55EBA527F484AD009C3558 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				EA55EBA627F48515009C3558 /* LocationManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		EAC3554B27DEF325009E192B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EAC3554827DEF2B4009E192B /* LocationDataSource.swift */,
 				EAC3555427DEFA6A009E192B /* PinItem.swift */,
 			);
 			path = Model;
@@ -155,10 +166,12 @@
 			isa = PBXGroup;
 			children = (
 				EAD1903F27D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift */,
+				EA55EBA827F54330009C3558 /* AppDelegate.swift */,
 				EA0DDF5627EC458C008FB0D5 /* View */,
 				EAC3554C27DEF35D009E192B /* ViewModel */,
 				EAC3554B27DEF325009E192B /* Model */,
 				EAC3555027DEF3DA009E192B /* Extensions */,
+				EA55EBA527F484AD009C3558 /* Manager */,
 				EAD1904127D5B5A4001CF9B5 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -368,13 +381,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA26B72427F180E8003BF66C /* CircleView.swift in Sources */,
+				EA55EBAD27F6BD5D009C3558 /* CurrentLocationCenterButton.swift in Sources */,
 				EAD1907C27D5B608001CF9B5 /* MainView.swift in Sources */,
 				EAC3554627DEF295009E192B /* MapViewModel.swift in Sources */,
+				EA55EBA927F54330009C3558 /* AppDelegate.swift in Sources */,
 				EAD1908227D5B64C001CF9B5 /* MapView.swift in Sources */,
 				EAD1906727D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift in Sources */,
 				EAC3555527DEFA6A009E192B /* PinItem.swift in Sources */,
-				EAC3554927DEF2B4009E192B /* LocationDataSource.swift in Sources */,
 				EAC3554E27DEF3D4009E192B /* CLAuthorizationStatus.swift in Sources */,
+				EA55EBA727F48515009C3558 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,7 +398,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAD1907D27D5B608001CF9B5 /* MainView.swift in Sources */,
-				EAC3554A27DEF2B4009E192B /* LocationDataSource.swift in Sources */,
 				EAD1906827D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift in Sources */,
 				EAC3554F27DEF3D4009E192B /* CLAuthorizationStatus.swift in Sources */,
 				EAC3555627DEFA6A009E192B /* PinItem.swift in Sources */,

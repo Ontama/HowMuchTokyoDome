@@ -7,19 +7,16 @@
 
 import SwiftUI
 import MapKit
-import CoreLocationUI
+import Combine
 
 struct MainView: View {
-    @ObservedObject var viewModel: ViewModel
+    @StateObject var viewModel = MapViewModel()
     var body: some View {
         ZStack(alignment: .topTrailing) {
             MapView(viewModel: viewModel)
+                .edgesIgnoringSafeArea(.all)
             VStack {
-                LocationButton {
-                    viewModel.changeCurrentLocation()
-                }
-                .labelStyle(.iconOnly)
-                .cornerRadius(24)
+                CurrentLocationCenterButton(buttonTappedPublisher: viewModel.currentLocationCenterButtonTappedPublisher)
                 .frame(width: 80, height: 80)
             }
             VStack(alignment: .center) {
@@ -41,16 +38,12 @@ struct MainView: View {
             
         }.onAppear {
             viewModel.activate()
-        }.onDisappear {
-            viewModel.deactivate()
         }
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(viewModel: ViewModel(model: LocationDataSource()))
+        MainView()
     }
 }
-
-

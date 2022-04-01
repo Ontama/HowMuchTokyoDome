@@ -9,61 +9,95 @@ import CoreLocation
 import Combine
 import SwiftUI
 
-final class ViewModel: NSObject, ObservableObject {
-    let model: LocationDataSource
-    var cancellables = Set<AnyCancellable>()
+final class MapViewModel: ObservableObject {
     @Published var authorizationStatus = CLAuthorizationStatus.notDetermined
-    @Published var location: CLLocation = .init()
-    private let currentChangeSubject = PassthroughSubject<Void, Never>()
+    @Published var mapCenter : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    
+    // A subject whose `send(_:)` method is being called from within the CurrentLocationCenterButton view to center the map on the user's location.
+      public var currentLocationCenterButtonTappedPublisher = PassthroughSubject<Bool, Never>()
+
+      // A publisher that turns a "center button tapped" event into a coordinate.
+      private var currentLocationCenterButtonTappedCoordinatePublisher: AnyPublisher<CLLocationCoordinate2D?, Never> {
+          currentLocationCenterButtonTappedPublisher
+              .map { _ in
+                  print ("new loc in pub: ", LocationManager.shared.currentUserCoordinate)
+                  return LocationManager.shared.currentUserCoordinate
+          }
+          .eraseToAnyPublisher()
+      }
+
+      private var coordinatePublisher: AnyPublisher<CLLocationCoordinate2D, Never> {
+
+          Publishers.Merge(LocationManager.shared.$initialUserCoordinate, currentLocationCenterButtonTappedCoordinatePublisher)
+              .replaceNil(with: CLLocationCoordinate2D(latitude: 2.0, longitude: 2.0))
+          .eraseToAnyPublisher()
+      }
+
+      private var cancellableSet: Set<AnyCancellable> = []
+      var cancellable: AnyCancellable?
+
+     init() {
+            // This does not result in an update to the view... why not?
+
+            coordinatePublisher
+                .receive(on: RunLoop.main)
+    //            .handleEvents(receiveSubscription: { (subscription) in
+    //                print("Receive subscription")
+    //            }, receiveOutput: { output in
+    //                print("Received output: \(String(describing: output))")
+    //
+    //            }, receiveCompletion: { _ in
+    //                print("Receive completion")
+    //            }, receiveCancel: {
+    //                print("Receive cancel")
+    //            }, receiveRequest: { demand in
+    //                print("Receive request: \(demand)")
+    //            })
+                .assign(to: \.mapCenter, on: self)
+                .store(in: &cancellableSet)
+
+            print(cancellableSet)
+
+            self.cancellable = self.coordinatePublisher.receive(on: DispatchQueue.main)
+                                                      .assign(to: \.mapCenter, on: self)
+        }
 
     var latitude: CLLocationDegrees {
-        location.coordinate.latitude
+        mapCenter.latitude
     }
 
     var longitude: CLLocationDegrees {
-        location.coordinate.longitude
-    }
-
-    init(model: LocationDataSource) {
-        self.model = model
+        mapCenter.longitude
     }
 
     func requestAuthorization() {
-        model.requestAuthorization()
+        LocationManager.shared.requestAuthorization()
     }
 
     func activate() {
-        model.authorizationPublisher().print("dump:status").sink { [weak self] authorizationStatus in
-            guard let self = self else { return }
-            self.authorizationStatus = authorizationStatus
-        }.store(in: &cancellables)
-
-        model.locationPublisher().print("dump:location").sink { [weak self] locations in
-            guard let self = self else { return }
-            if let last = locations.last {
-                self.location = last
-                
-            }
-        }.store(in: &cancellables)
+//        locationManager.authorizationPublisher().print("dump:status").sink { [weak self] authorizationStatus in
+//            guard let self = self else { return }
+//            self.authorizationStatus = authorizationStatus
+//        }.store(in: &cancellables)
+//
+//        locationManager.locationPublisher().print("dump:location").sink { [weak self] locations in
+//            guard let self = self else { return }
+//            if let last = locations.last {
+//                self.location = last
+//
+//            }
+//        }.store(in: &cancellables)
     }
     
-    func deactivate() {
-        cancellables.removeAll()
-    }
+//    func deactivate() {
+//        cancellables.removeAll()
+//    }
 
     func startTracking() {
-        model.startTracking()
+        LocationManager.shared.startTracking()
     }
 
     func stopTracking() {
-        model.stopTracking()
-    }
-    
-    func changeCurrentLocation() {
-        currentChangeSubject.send()
-    }
-    
-    func currentChangePublisher() -> AnyPublisher<Void, Never>{
-        return currentChangeSubject.eraseToAnyPublisher()
+        LocationManager.shared.stopTracking()
     }
 }

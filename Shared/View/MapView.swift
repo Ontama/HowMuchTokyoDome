@@ -7,40 +7,72 @@
 
 import SwiftUI
 import MapKit
-import CoreLocation
+import Combine
+import UIKit
 
-struct MapView: View {
-    @State private var region = MKCoordinateRegion() // 座標領域
-    @State private var userTrackingMode: MapUserTrackingMode = .none
-    @ObservedObject var viewModel: ViewModel
-    private let span = MKCoordinateSpan(latitudeDelta: 0.0009, longitudeDelta: 0.0009)
+struct MapView: UIViewRepresentable {
+    @ObservedObject var viewModel: MapViewModel
+    // The center of the map.
+    var coordinate: CLLocationCoordinate2D
+    let mapView = MKMapView(frame: .zero)
     
-    var body: some View {
-        Map(coordinateRegion: $region,
-            interactionModes: .all,
-            showsUserLocation: true,
-            userTrackingMode: $userTrackingMode,
-            annotationItems: [
-                PinItem(coordinate: .init(latitude: viewModel.latitude, longitude: viewModel.longitude))
-            ],
-            annotationContent: { item in
-            MapMarker(coordinate: item.coordinate)
-        })
-            .onAppear(perform: {
-                viewModel.startTracking()
-            })
-            .onReceive(viewModel.currentChangePublisher(), perform: { locations in
-                updateReigion(coordinate: CLLocationCoordinate2D(latitude: viewModel.latitude, longitude: viewModel.longitude))
-            })
-         // 現在地を取得したら現在地を中心にする
-            .onReceive(viewModel.$location) { locations in
-                updateReigion(coordinate: CLLocationCoordinate2D(latitude: locations.coordinate.latitude, longitude: locations.coordinate.longitude))
-            }
+    init(viewModel: MapViewModel) {
+        self.viewModel = viewModel
+        self.coordinate = viewModel.mapCenter
     }
     
-    // 引数で取得した緯度経度を使って動的に表示領域の中心位置と、縮尺を決める
-    func updateReigion(coordinate: CLLocationCoordinate2D) {
-        region = MKCoordinateRegion(center: coordinate,
-                                    span: span)
+    func makeUIView(context: Context) -> MKMapView {
+        mapView.showsUserLocation = true
+        return mapView
+    }
+
+    func updateUIView(_ view: MKMapView, context: Context) {
+        let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+        let region = MKCoordinateRegion(center: coordinate, span: span)
+        print("map new coordinate", coordinate)
+        view.setRegion(region, animated: true)
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+    
+    class Coordinator: NSObject, MKMapViewDelegate {
+        var parent: MapView
+        var subscribers: [AnyCancellable] = []
+        
+        var changeCurrentLocation: ((CLLocationCoordinate2D) -> Void)?
+
+        init(_ parent: MapView) {
+            self.parent = parent
+        }
+
+        func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+            //print(mapView.centerCoordinate)
+            print("** mapViewDidChangeVisibleRegion ** \(parent.viewModel.latitude)")
+            
+        }
+
+        func mapView(_ mapView: MKMapView,
+                     didUpdate userLocation: MKUserLocation) {
+            print("User location\(userLocation.coordinate) \(parent.viewModel.latitude)")
+        }
+
+        func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
+            print("Map will start loading \(parent.viewModel.latitude)")
+        }
+        func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+            print("Map did finish loading \(parent.viewModel.latitude)")
+        }
+
+        func mapViewWillStartLocatingUser(_ mapView: MKMapView) {
+            print("Map will start locating user \(parent.viewModel.latitude)")
+        }
+
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
+            view.canShowCallout = true
+            return view
+        }
     }
 }
