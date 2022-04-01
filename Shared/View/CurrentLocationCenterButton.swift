@@ -9,12 +9,9 @@ import SwiftUI
 import Combine
 
 struct CurrentLocationCenterButton: View {
-    var buttonTappedPublisher: PassthroughSubject<Bool, Never>
-
+    var action: () -> Void
     var body: some View {
-        Button(action: {
-            self.buttonTappedPublisher.send(true)
-        }) {
+        Button(action: action) {
             Image(systemName: "location.fill")
                 .imageScale(.large)
                 .accessibility(label: Text("Center map"))
@@ -24,6 +21,6 @@ struct CurrentLocationCenterButton: View {
 
 struct CurrentLocationCenterButton_Previews: PreviewProvider {
     static var previews: some View {
-        CurrentLocationCenterButton(buttonTappedPublisher: MapViewModel().currentLocationCenterButtonTappedPublisher)
+        CurrentLocationCenterButton(action: {})
     }
 }

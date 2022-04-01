@@ -7,18 +7,17 @@
 
 import CoreLocation
 import Combine
-import SwiftUI
 
 final class MapViewModel: ObservableObject {
-    @Published var authorizationStatus = CLAuthorizationStatus.notDetermined
+//    @Published var authorizationStatus = CLAuthorizationStatus.notDetermined
     @Published var mapCenter : CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     
     // A subject whose `send(_:)` method is being called from within the CurrentLocationCenterButton view to center the map on the user's location.
-    public var currentLocationCenterButtonTappedPublisher = PassthroughSubject<Bool, Never>()
+    private(set) var currentLocationCenterButtonTappedSubject = PassthroughSubject<Void, Never>()
     
     // A publisher that turns a "center button tapped" event into a coordinate.
     private var currentLocationCenterButtonTappedCoordinatePublisher: AnyPublisher<CLLocationCoordinate2D?, Never> {
-        currentLocationCenterButtonTappedPublisher
+        currentLocationCenterButtonTappedSubject
             .map { _ in
                 print ("new loc in pub: ", LocationManager.shared.currentUserCoordinate)
                 return LocationManager.shared.currentUserCoordinate
