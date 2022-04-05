@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 import Combine
 
-class LocationManager: NSObject, ObservableObject {
+final class LocationManager: NSObject, ObservableObject {
     static let shared = LocationManager()
     let locationManager = CLLocationManager()
     
@@ -19,7 +19,7 @@ class LocationManager: NSObject, ObservableObject {
     @Published var currentUserCoordinate: CLLocationCoordinate2D?
 //    let geoCoder = CLGeocoder()
 
-    override init() {
+    override private init() {
         super.init()
         
         locationManager.delegate = self

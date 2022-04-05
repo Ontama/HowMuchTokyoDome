@@ -6,11 +6,9 @@
 //
 
 import SwiftUI
-import CoreLocation
 
 @main
 struct HowMuchTokyoDomeApp: App {
-    @StateObject var locationManager = LocationManager()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {

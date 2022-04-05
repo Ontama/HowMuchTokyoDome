@@ -13,8 +13,8 @@ import UIKit
 struct MapView: UIViewRepresentable {
     @ObservedObject var viewModel: MapViewModel
     // The center of the map.
-    var coordinate: CLLocationCoordinate2D
-    let mapView = MKMapView(frame: .zero)
+    private var coordinate: CLLocationCoordinate2D
+    private let mapView = MKMapView(frame: .zero)
     
     init(viewModel: MapViewModel) {
         self.viewModel = viewModel
@@ -37,7 +37,7 @@ struct MapView: UIViewRepresentable {
         Coordinator(self)
     }
     
-    class Coordinator: NSObject, MKMapViewDelegate {
+    final class Coordinator: NSObject, MKMapViewDelegate {
         var parent: MapView
         
         var changeCurrentLocation: ((CLLocationCoordinate2D) -> Void)?
@@ -52,8 +52,7 @@ struct MapView: UIViewRepresentable {
             
         }
 
-        func mapView(_ mapView: MKMapView,
-                     didUpdate userLocation: MKUserLocation) {
+        func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
             print("User location\(userLocation.coordinate) \(parent.viewModel.latitude)")
         }
 

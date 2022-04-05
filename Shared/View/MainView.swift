@@ -16,7 +16,9 @@ struct MainView: View {
             MapView(viewModel: viewModel)
                 .edgesIgnoringSafeArea(.all)
             VStack {
-                CurrentLocationCenterButton(buttonTappedPublisher: viewModel.currentLocationCenterButtonTappedPublisher)
+                CurrentLocationCenterButton(action: {
+                    viewModel.currentLocationCenterButtonTappedSubject.send()
+                })
                 .frame(width: 80, height: 80)
             }
             VStack(alignment: .center) {
