@@ -19,7 +19,6 @@ final class MapViewModel: ObservableObject {
     private var currentLocationCenterButtonTappedCoordinatePublisher: AnyPublisher<CLLocationCoordinate2D?, Never> {
         currentLocationCenterButtonTappedSubject
             .map { _ in
-                print ("new loc in pub: ", LocationManager.shared.currentUserCoordinate)
                 return LocationManager.shared.currentUserCoordinate
             }
             .eraseToAnyPublisher()
@@ -30,6 +29,7 @@ final class MapViewModel: ObservableObject {
             .replaceNil(with: CLLocationCoordinate2D(latitude: 2.0, longitude: 2.0))
             .eraseToAnyPublisher()
     }
+    
     private var cancellableSet = Set<AnyCancellable>()
     
     init() {

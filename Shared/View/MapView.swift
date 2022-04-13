@@ -23,6 +23,8 @@ struct MapView: UIViewRepresentable {
     
     func makeUIView(context: Context) -> MKMapView {
         mapView.showsUserLocation = true
+        mapView.showsScale = true
+        mapView.isPitchEnabled = false
         return mapView
     }
 
@@ -34,7 +36,9 @@ struct MapView: UIViewRepresentable {
     }
 
     func makeCoordinator() -> Coordinator {
-        Coordinator(self)
+        let cordinator = Coordinator(self)
+        mapView.delegate = cordinator
+        return cordinator
     }
     
     final class Coordinator: NSObject, MKMapViewDelegate {
@@ -48,8 +52,8 @@ struct MapView: UIViewRepresentable {
 
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
             //print(mapView.centerCoordinate)
-            print("** mapViewDidChangeVisibleRegion ** \(parent.viewModel.latitude)")
-            
+            print("** mapViewDidChangeVisibleRegion ** \(mapView.region.span)")
+
         }
 
         func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
@@ -66,6 +70,10 @@ struct MapView: UIViewRepresentable {
         func mapViewWillStartLocatingUser(_ mapView: MKMapView) {
             print("Map will start locating user \(parent.viewModel.latitude)")
         }
+        
+//        func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+//            print("region \(mapView.region)")
+//        }
 
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
             let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)

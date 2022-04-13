@@ -13,9 +13,7 @@ final class LocationManager: NSObject, ObservableObject {
     static let shared = LocationManager()
     let locationManager = CLLocationManager()
     
-    // The first location reported by the CLLocationManager.
     @Published var initialUserCoordinate: CLLocationCoordinate2D?
-    // The latest location reported by the CLLocationManager.
     @Published var currentUserCoordinate: CLLocationCoordinate2D?
 //    let geoCoder = CLGeocoder()
 
