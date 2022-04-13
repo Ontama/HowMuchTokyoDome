@@ -12,7 +12,7 @@ struct CircleView: View {
         Circle()
             .stroke(lineWidth: 3)
             .fill(Color.red)
-            .frame(width: 200, height: 200)
+            .frame(width: UIScreen.width, height: UIScreen.width )
     }
 }
 
