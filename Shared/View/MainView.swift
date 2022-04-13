@@ -15,30 +15,25 @@ struct MainView: View {
         ZStack(alignment: .topTrailing) {
             MapView(viewModel: viewModel)
                 .edgesIgnoringSafeArea(.all)
-            VStack {
-                CurrentLocationCenterButton(action: {
-                    viewModel.currentLocationCenterButtonTappedSubject.send()
-                })
-                .frame(width: 80, height: 80)
-            }
+            CurrentLocationCenterButton(action: {
+                viewModel.currentLocationCenterButtonTappedSubject.send()
+            })
+            .frame(width: 80, height: 80)
             VStack(alignment: .center) {
-                CircleView()
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
-            }
-            VStack {
                 Spacer()
-                Button {
-                    
-                } label: {
-                    Text("大きさを変更する")
+                CircleView()
+                    .frame(width: UIScreen.width, height: UIScreen.width, alignment: .center)
+                HStack(alignment: .center) {
+                    Text("東京ドーム")
+                    Text("\(viewModel.tokyoDomeCount)")
+                    Text("個分の大きさ")
                 }
-                .buttonStyle(.borderedProminent)
-                .padding(.bottom, 20)
+                Text("\(viewModel.squareMeasure)")
+//                Text("\(viewModel.distance.latitudeKiro)")
+                Spacer()
             }
-        
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
-            
         }
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
     }
 }
 
