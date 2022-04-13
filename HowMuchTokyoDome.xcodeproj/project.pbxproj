@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		EA26B72427F180E8003BF66C /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA26B72327F180E8003BF66C /* CircleView.swift */; };
+		EA35A3BF2806693900345975 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD1904127D5B5A4001CF9B5 /* Assets.xcassets */; };
+		EA35A3C12806696A00345975 /* TokyoDomeInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA35A3C02806696A00345975 /* TokyoDomeInfo.plist */; };
 		EA55EBA727F48515009C3558 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA55EBA627F48515009C3558 /* LocationManager.swift */; };
 		EA55EBA927F54330009C3558 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA55EBA827F54330009C3558 /* AppDelegate.swift */; };
 		EA55EBAD27F6BD5D009C3558 /* CurrentLocationCenterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA55EBAC27F6BD5D009C3558 /* CurrentLocationCenterButton.swift */; };
@@ -17,7 +19,6 @@
 		EAD1905827D5B5A4001CF9B5 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1905727D5B5A4001CF9B5 /* Tests_iOS.swift */; };
 		EAD1905A27D5B5A4001CF9B5 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1905927D5B5A4001CF9B5 /* Tests_iOSLaunchTests.swift */; };
 		EAD1906727D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1903F27D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift */; };
-		EAD1906B27D5B5A4001CF9B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD1904127D5B5A4001CF9B5 /* Assets.xcassets */; };
 		EAD1907C27D5B608001CF9B5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1907B27D5B608001CF9B5 /* MainView.swift */; };
 		EAD1908227D5B64C001CF9B5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1908127D5B64B001CF9B5 /* MapView.swift */; };
 		EAD1908527D5BA62001CF9B5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD1908427D5BA62001CF9B5 /* CoreLocation.framework */; };
@@ -35,10 +36,10 @@
 
 /* Begin PBXFileReference section */
 		EA26B72327F180E8003BF66C /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		EA35A3C02806696A00345975 /* TokyoDomeInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TokyoDomeInfo.plist; sourceTree = "<group>"; };
 		EA55EBA627F48515009C3558 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		EA55EBA827F54330009C3558 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA55EBAC27F6BD5D009C3558 /* CurrentLocationCenterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentLocationCenterButton.swift; sourceTree = "<group>"; };
-		EAC3545727D5BAFE009E192B /* HowMuchTokyoDomeInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = HowMuchTokyoDomeInfo.plist; sourceTree = "<group>"; };
 		EAC3554527DEF295009E192B /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		EAC3554D27DEF3D4009E192B /* CLAuthorizationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLAuthorizationStatus.swift; sourceTree = "<group>"; };
 		EAC3555427DEFA6A009E192B /* PinItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinItem.swift; sourceTree = "<group>"; };
@@ -118,7 +119,7 @@
 		EAD1903927D5B5A3001CF9B5 = {
 			isa = PBXGroup;
 			children = (
-				EAC3545727D5BAFE009E192B /* HowMuchTokyoDomeInfo.plist */,
+				EA35A3C02806696A00345975 /* TokyoDomeInfo.plist */,
 				EAD1903E27D5B5A4001CF9B5 /* Shared */,
 				EAD1905627D5B5A4001CF9B5 /* Tests iOS */,
 				EAD1904727D5B5A4001CF9B5 /* Products */,
@@ -248,7 +249,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAD1906B27D5B5A4001CF9B5 /* Assets.xcassets in Resources */,
+				EA35A3C12806696A00345975 /* TokyoDomeInfo.plist in Resources */,
+				EA35A3BF2806693900345975 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,15 +421,16 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HowMuchTokyoDomeInfo.plist;
+				INFOPLIST_FILE = TokyoDomeInfo.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "このアプリケーションは位置情報を使用します";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -452,15 +455,16 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HowMuchTokyoDomeInfo.plist;
+				INFOPLIST_FILE = TokyoDomeInfo.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "このアプリケーションは位置情報を使用します";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
