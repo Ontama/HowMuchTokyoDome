@@ -12,9 +12,9 @@ import UIKit
 
 struct MapView: UIViewRepresentable {
     @ObservedObject var viewModel: MapViewModel
-    // The center of the map.
     private var coordinate: CLLocationCoordinate2D
     private let mapView = MKMapView(frame: .zero)
+    private let defaultMeter = CLLocationDistance(1000)
     
     init(viewModel: MapViewModel) {
         self.viewModel = viewModel
@@ -35,9 +35,7 @@ struct MapView: UIViewRepresentable {
             return
         }
         
-        let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
-        let region = MKCoordinateRegion(center: coordinate, span: span)
-        print("map new coordinate", coordinate)
+        let region = MKCoordinateRegion(center: self.coordinate, latitudinalMeters: defaultMeter, longitudinalMeters: defaultMeter)
         view.setRegion(region, animated: true)
     }
     
@@ -55,36 +53,22 @@ struct MapView: UIViewRepresentable {
         }
         
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
-            // CLLocationDegrees 1 に対しての距離(km)
-            let degreeOfDelta = 111.045 // 69miles
-            
-            let latitudeKiro = mapView.region.span.latitudeDelta as Double / degreeOfDelta
-            let longitudeKiro = mapView.region.span.longitudeDelta as Double / degreeOfDelta
-            let distance = MapDistance(latitudeKiro: latitudeKiro, longitudeKiro: longitudeKiro)
-            print("** latitudeKiro longitudeKiro** \(latitudeKiro) , \(longitudeKiro)")
-            
+            print(mapView.regionInMeter())
             parent.viewModel.shouldUpdateView = false
-            parent.viewModel.distanceSubject.send(distance)
+            parent.viewModel.distanceSubject.send(mapView.regionInMeter() as Double)
         }
         
         func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-            print("User location\(userLocation.coordinate) \(parent.viewModel.latitude)")
         }
         
         func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
-            print("Map will start loading \(parent.viewModel.latitude)")
         }
+        
         func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
-            print("Map did finish loading \(parent.viewModel.latitude)")
         }
         
         func mapViewWillStartLocatingUser(_ mapView: MKMapView) {
-            print("Map will start locating user \(parent.viewModel.latitude)")
         }
-        
-        //        func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        //            print("region \(mapView.region)")
-        //        }
         
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
             let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
@@ -92,4 +76,14 @@ struct MapView: UIViewRepresentable {
             return view
         }
     }
+}
+
+extension MKMapView {
+  // 画面上に表示されている東西の距離
+  func regionInMeter() -> CLLocationDistance {
+      let eastMapPoint = MKMapPoint(x: visibleMapRect.minX, y: visibleMapRect.midY)
+      let westMapPoint = MKMapPoint(x: visibleMapRect.maxX, y: visibleMapRect.midY)
+
+      return eastMapPoint.distance(to: westMapPoint)
+  }
 }

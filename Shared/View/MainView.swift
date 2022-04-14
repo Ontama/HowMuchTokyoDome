@@ -28,8 +28,6 @@ struct MainView: View {
                     Text("\(viewModel.tokyoDomeCount)")
                     Text("個分の大きさ")
                 }
-                Text("\(viewModel.squareMeasure)")
-//                Text("\(viewModel.distance.latitudeKiro)")
                 Spacer()
             }
         }
