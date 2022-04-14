@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		EA26B72427F180E8003BF66C /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA26B72327F180E8003BF66C /* CircleView.swift */; };
 		EA35A3BF2806693900345975 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD1904127D5B5A4001CF9B5 /* Assets.xcassets */; };
-		EA35A3C12806696A00345975 /* TokyoDomeInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA35A3C02806696A00345975 /* TokyoDomeInfo.plist */; };
 		EA35A3C32806858D00345975 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35A3C22806858D00345975 /* UIScreen+Extension.swift */; };
 		EA55EBA727F48515009C3558 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA55EBA627F48515009C3558 /* LocationManager.swift */; };
 		EA55EBA927F54330009C3558 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA55EBA827F54330009C3558 /* AppDelegate.swift */; };
@@ -252,7 +251,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA35A3C12806696A00345975 /* TokyoDomeInfo.plist in Resources */,
 				EA35A3BF2806693900345975 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

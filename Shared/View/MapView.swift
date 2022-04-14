@@ -30,6 +30,11 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ view: MKMapView, context: Context) {
+        guard viewModel.shouldUpdateView else {
+            viewModel.shouldUpdateView = true
+            return
+        }
+        
         let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
         let region = MKCoordinateRegion(center: coordinate, span: span)
         print("map new coordinate", coordinate)
@@ -50,9 +55,6 @@ struct MapView: UIViewRepresentable {
         }
         
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
-            //print(mapView.centerCoordinate)
-            print("** mapViewDidChangeVisibleRegion ** \(mapView.region.span)")
-            
             // CLLocationDegrees 1 に対しての距離(km)
             let degreeOfDelta = 111.045 // 69miles
             
@@ -61,7 +63,7 @@ struct MapView: UIViewRepresentable {
             let distance = MapDistance(latitudeKiro: latitudeKiro, longitudeKiro: longitudeKiro)
             print("** latitudeKiro longitudeKiro** \(latitudeKiro) , \(longitudeKiro)")
             
-            // fixme: sendするとこの処理が大量に呼ばれるのを修正する
+            parent.viewModel.shouldUpdateView = false
             parent.viewModel.distanceSubject.send(distance)
         }
         

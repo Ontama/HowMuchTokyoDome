@@ -16,8 +16,11 @@ struct MapDistance {
 final class MapViewModel: ObservableObject {
 //    @Published var authorizationStatus = CLAuthorizationStatus.notDetermined
     @Published var mapCenter: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    // 東京ドーム何個分か
     var tokyoDomeCount = 0.0
+    // 面積(km2)
     var squareMeasure = 0.0
+    var shouldUpdateView: Bool = true
     @Published var distance = MapDistance()
     
     private(set) var distanceSubject = PassthroughSubject<MapDistance, Never>()
