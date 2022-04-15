@@ -14,7 +14,7 @@ struct MapView: UIViewRepresentable {
     @ObservedObject var viewModel: MapViewModel
     private var coordinate: CLLocationCoordinate2D
     private let mapView = MKMapView(frame: .zero)
-    private let defaultMeter = CLLocationDistance(1000)
+    private let defaultMeter = CLLocationDistance(TokyoDomeInfo.diameter)
     
     init(viewModel: MapViewModel) {
         self.viewModel = viewModel
@@ -45,17 +45,14 @@ struct MapView: UIViewRepresentable {
     
     final class Coordinator: NSObject, MKMapViewDelegate {
         var parent: MapView
-        
-        var changeCurrentLocation: ((CLLocationCoordinate2D) -> Void)?
-        
         init(_ parent: MapView) {
             self.parent = parent
         }
         
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
-            print(mapView.regionInMeter())
+            guard parent.viewModel.shouldCalcDistance else { return }
             parent.viewModel.shouldUpdateView = false
-            parent.viewModel.distanceSubject.send(mapView.regionInMeter() as Double)
+            parent.viewModel.distanceSubject.send(mapView.regionInMeter() / 2 as Double)
         }
         
         func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
@@ -69,7 +66,14 @@ struct MapView: UIViewRepresentable {
         
         func mapViewWillStartLocatingUser(_ mapView: MKMapView) {
         }
-        
+
+//
+//        func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+//
+//            parent.viewModel.shouldUpdateView = false
+//            parent.viewModel.distanceSubject.send(mapView.regionInMeter() as Double)
+//        }
+//
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
             let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
             view.canShowCallout = true
@@ -79,11 +83,8 @@ struct MapView: UIViewRepresentable {
 }
 
 extension MKMapView {
-  // 画面上に表示されている東西の距離
+  // 画面上に表示されている東西の距離(m)
   func regionInMeter() -> CLLocationDistance {
-      let eastMapPoint = MKMapPoint(x: visibleMapRect.minX, y: visibleMapRect.midY)
-      let westMapPoint = MKMapPoint(x: visibleMapRect.maxX, y: visibleMapRect.midY)
-
-      return eastMapPoint.distance(to: westMapPoint)
+      return region.span.latitudeDelta * 111 * 1000
   }
 }
