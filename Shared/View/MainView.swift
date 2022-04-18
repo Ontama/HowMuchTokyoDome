@@ -11,15 +11,44 @@ import Combine
 
 struct MainView: View {
     @StateObject var viewModel = MapViewModel()
+    @State var isEditing = false
+    @State var searchText = ""
+    
     var body: some View {
         ZStack(alignment: .topTrailing) {
             MapView(viewModel: viewModel)
                 .edgesIgnoringSafeArea(.all)
-            CurrentLocationCenterButton(action: {
-                viewModel.currentLocationCenterButtonTappedSubject.send()
-            })
-            .frame(width: 80, height: 80)
             VStack(alignment: .center) {
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                    TextField("検索したい地点を入れてください",
+                              text: $searchText,
+                              onEditingChanged: { isEditing in
+                        self.isEditing = isEditing
+                    })
+                    HStack {
+                        Button("検索") {
+                            
+                        }
+                        if isEditing {
+                            Button(action: {
+                                self.searchText = ""
+                            }){
+                                Image(systemName: "multiply.circle.fill")
+                                    .foregroundColor(.gray)
+                            }
+                            
+                        }
+                    }
+                }
+                HStack {
+                    Spacer()
+                    CurrentLocationCenterButton(action: {
+                        viewModel.currentLocationCenterButtonTappedSubject.send()
+                    })
+                    .frame(width: 80, height: 80)
+                }
+
                 Spacer()
                 CircleView()
                     .frame(width: UIScreen.width, height: UIScreen.width, alignment: .center)
