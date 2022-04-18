@@ -35,10 +35,7 @@ struct MapView: UIViewRepresentable {
             return
         }
         
-        print(mapView.centerCoordinate)
-        
         switch viewModel.event {
-            
         case .currentLocation:
             let region = MKCoordinateRegion(center: self.coordinate, latitudinalMeters: defaultMeter, longitudinalMeters: defaultMeter)
             view.setRegion(region, animated: true)
@@ -68,6 +65,16 @@ struct MapView: UIViewRepresentable {
         }
         
         func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
+            guard mapView.centerCoordinate.latitude < 0,
+               mapView.centerCoordinate.latitude > -3.85,
+               mapView.centerCoordinate.longitude < 0,
+               mapView.centerCoordinate.longitude > -7.71 else {
+                return
+            }
+            
+            let center = CLLocationCoordinate2D(latitude: TokyoDomeInfo.lat, longitude: TokyoDomeInfo.lon)
+            let region = MKCoordinateRegion(center: center, latitudinalMeters: parent.defaultMeter, longitudinalMeters: parent.defaultMeter)
+            mapView.setRegion(region, animated: true)
         }
         
         func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
