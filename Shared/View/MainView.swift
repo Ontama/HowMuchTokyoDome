@@ -28,6 +28,9 @@ struct MainView: View {
                     Text("\(viewModel.tokyoDomeCount)")
                     Text("個分の大きさ")
                 }
+                Button("1個分に戻す") {
+                    viewModel.oneSizeChangeTappedSubject.send()
+                }
                 Spacer()
             }
         }

@@ -8,11 +8,17 @@
 import CoreLocation
 import Combine
 
+enum Event: String {
+    case currentLocation
+    case oneSize
+}
+
 final class MapViewModel: ObservableObject {
     // MapViewのupdateUIViewを呼ばれないようにするフラグ
     // updateUIViewで制御しないとmapViewDidChangeVisibleRegionが呼ばれたときにupdateUIViewが呼ばれループする
     var shouldUpdateView = true
-    var shouldCalcDistance = true
+    
+    @Published var event = Event.currentLocation
     
 //    @Published var authorizationStatus = CLAuthorizationStatus.notDetermined
     @Published var mapCenter: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
@@ -20,9 +26,12 @@ final class MapViewModel: ObservableObject {
     @Published var tokyoDomeCount = 0.0
     // 面積(km2)
     var dimensions = 0.0
-    private(set) var distanceSubject = PassthroughSubject<Double, Never>()
+    var centerLocation = CLLocationCoordinate2D()
     
-    // A subject whose `send(_:)` method is being called from within the CurrentLocationCenterButton view to center the map on the user's location.
+    private(set) var distanceSubject = PassthroughSubject<Double, Never>()
+    // 1個分の大きさに戻す
+    private(set) var oneSizeChangeTappedSubject = PassthroughSubject<Void, Never>()
+    // 現在地を中心に地図を戻す
     private(set) var currentLocationCenterButtonTappedSubject = PassthroughSubject<Void, Never>()
     
     // A publisher that turns a "center button tapped" event into a coordinate.
@@ -43,18 +52,28 @@ final class MapViewModel: ObservableObject {
     private var cancellableSet = Set<AnyCancellable>()
     
     init() {
-        self.coordinatePublisher.receive(on: DispatchQueue.main)
+        coordinatePublisher.receive(on: DispatchQueue.main)
             .assign(to: \.mapCenter, on: self)
             .store(in: &cancellableSet)
-        self.distanceSubject
+        currentLocationCenterButtonTappedSubject
+            .sink(receiveValue: { [weak self] _ in
+                guard let self = self else { return }
+                self.event = .currentLocation
+            }).store(in: &cancellableSet)
+        oneSizeChangeTappedSubject
+            .sink(receiveValue: { [weak self] _ in
+                guard let self = self else { return }
+                self.event = .oneSize
+            }).store(in: &cancellableSet)
+        distanceSubject
             .throttle(for: .seconds(0.1), scheduler: DispatchQueue.main, latest: true)
             .sink { [weak self] distance in
-            print("distance \(distance)")
             guard let self = self else { return }
             let radius = distance / 2
             self.dimensions = Double(radius * radius * 3.14)
             self.tokyoDomeCount = self.dimensions / TokyoDomeInfo.squareMeter
         }.store(in: &cancellableSet)
+
 
     }
     

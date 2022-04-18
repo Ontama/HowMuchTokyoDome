@@ -35,8 +35,17 @@ struct MapView: UIViewRepresentable {
             return
         }
         
-        let region = MKCoordinateRegion(center: self.coordinate, latitudinalMeters: defaultMeter, longitudinalMeters: defaultMeter)
-        view.setRegion(region, animated: true)
+        print(mapView.centerCoordinate)
+        
+        switch viewModel.event {
+            
+        case .currentLocation:
+            let region = MKCoordinateRegion(center: self.coordinate, latitudinalMeters: defaultMeter, longitudinalMeters: defaultMeter)
+            view.setRegion(region, animated: true)
+        case .oneSize:
+            let region = MKCoordinateRegion(center: viewModel.centerLocation, latitudinalMeters: defaultMeter, longitudinalMeters: defaultMeter)
+            view.setRegion(region, animated: true)
+        }
     }
     
     func makeCoordinator() -> Coordinator {
@@ -50,9 +59,9 @@ struct MapView: UIViewRepresentable {
         }
         
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
-            guard parent.viewModel.shouldCalcDistance else { return }
             parent.viewModel.shouldUpdateView = false
             parent.viewModel.distanceSubject.send(mapView.regionInMeter() / 2 as Double)
+            parent.viewModel.centerLocation = mapView.centerCoordinate
         }
         
         func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
