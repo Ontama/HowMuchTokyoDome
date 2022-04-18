@@ -14,7 +14,7 @@ struct MapView: UIViewRepresentable {
     @ObservedObject var viewModel: MapViewModel
     private var coordinate: CLLocationCoordinate2D
     private let mapView = MKMapView(frame: .zero)
-    private let defaultMeter = CLLocationDistance(TokyoDomeInfo.diameter)
+    private let defaultMeter = CLLocationDistance(TokyoDomeInfo.diameter) + 2
     
     init(viewModel: MapViewModel) {
         self.viewModel = viewModel
