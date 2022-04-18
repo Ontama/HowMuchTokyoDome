@@ -25,7 +25,7 @@ struct MainView: View {
                     .frame(width: UIScreen.width, height: UIScreen.width, alignment: .center)
                 HStack(alignment: .center) {
                     Text("東京ドーム")
-                    Text("\(viewModel.tokyoDomeCount)")
+                    Text(String(format: "%.1f", viewModel.tokyoDomeCount))
                     Text("個分の大きさ")
                 }
                 Button("1個分に戻す") {

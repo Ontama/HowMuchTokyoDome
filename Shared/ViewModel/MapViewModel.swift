@@ -71,7 +71,7 @@ final class MapViewModel: ObservableObject {
             guard let self = self else { return }
             let radius = distance / 2
             self.dimensions = Double(radius * radius * 3.14)
-            self.tokyoDomeCount = self.dimensions / TokyoDomeInfo.squareMeter
+            self.tokyoDomeCount = round(self.dimensions / TokyoDomeInfo.squareMeter * 10) / 10
         }.store(in: &cancellableSet)
 
 
