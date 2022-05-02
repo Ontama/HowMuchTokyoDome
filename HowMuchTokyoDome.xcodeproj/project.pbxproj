@@ -17,12 +17,12 @@
 		EAC3554627DEF295009E192B /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3554527DEF295009E192B /* MapViewModel.swift */; };
 		EAC3554E27DEF3D4009E192B /* CLAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3554D27DEF3D4009E192B /* CLAuthorizationStatus.swift */; };
 		EAC3555527DEFA6A009E192B /* PinItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC3555427DEFA6A009E192B /* PinItem.swift */; };
-		EAD1905827D5B5A4001CF9B5 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1905727D5B5A4001CF9B5 /* Tests_iOS.swift */; };
-		EAD1905A27D5B5A4001CF9B5 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1905927D5B5A4001CF9B5 /* Tests_iOSLaunchTests.swift */; };
 		EAD1906727D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1903F27D5B5A4001CF9B5 /* HowMuchTokyoDomeApp.swift */; };
 		EAD1907C27D5B608001CF9B5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1907B27D5B608001CF9B5 /* MainView.swift */; };
 		EAD1908227D5B64C001CF9B5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1908127D5B64B001CF9B5 /* MapView.swift */; };
-		EAD1908527D5BA62001CF9B5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD1908427D5BA62001CF9B5 /* CoreLocation.framework */; };
+		EAD2D1ED281FFD4000BF225D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD2D1EC281FFD4000BF225D /* CoreLocation.framework */; };
+		EAD2D1F2281FFE1E00BF225D /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD2D1F1281FFE1E00BF225D /* Alamofire.xcframework */; };
+		EAD2D1F3281FFE1E00BF225D /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAD2D1F1281FFE1E00BF225D /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +34,20 @@
 			remoteInfo = "HowMuchTokyoDome (iOS)";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EAD2D1EB281FFC0100BF225D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EAD2D1F3281FFE1E00BF225D /* Alamofire.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		EA26B72327F180E8003BF66C /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
@@ -50,11 +64,10 @@
 		EAD1904127D5B5A4001CF9B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAD1904627D5B5A4001CF9B5 /* HowMuchTokyoDome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HowMuchTokyoDome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAD1905327D5B5A4001CF9B5 /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EAD1905727D5B5A4001CF9B5 /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
-		EAD1905927D5B5A4001CF9B5 /* Tests_iOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOSLaunchTests.swift; sourceTree = "<group>"; };
 		EAD1907B27D5B608001CF9B5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		EAD1908127D5B64B001CF9B5 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		EAD1908427D5BA62001CF9B5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.2.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		EAD2D1EC281FFD4000BF225D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.4.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		EAD2D1F1281FFE1E00BF225D /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAD1908527D5BA62001CF9B5 /* CoreLocation.framework in Frameworks */,
+				EAD2D1F2281FFE1E00BF225D /* Alamofire.xcframework in Frameworks */,
+				EAD2D1ED281FFD4000BF225D /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +140,6 @@
 			children = (
 				EA35A3C02806696A00345975 /* TokyoDomeInfo.plist */,
 				EAD1903E27D5B5A4001CF9B5 /* Shared */,
-				EAD1905627D5B5A4001CF9B5 /* Tests iOS */,
 				EAD1904727D5B5A4001CF9B5 /* Products */,
 				EAD1908327D5BA62001CF9B5 /* Frameworks */,
 			);
@@ -156,19 +169,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EAD1905627D5B5A4001CF9B5 /* Tests iOS */ = {
-			isa = PBXGroup;
-			children = (
-				EAD1905727D5B5A4001CF9B5 /* Tests_iOS.swift */,
-				EAD1905927D5B5A4001CF9B5 /* Tests_iOSLaunchTests.swift */,
-			);
-			path = "Tests iOS";
-			sourceTree = "<group>";
-		};
 		EAD1908327D5BA62001CF9B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EAD1908427D5BA62001CF9B5 /* CoreLocation.framework */,
+				EAD2D1F1281FFE1E00BF225D /* Alamofire.xcframework */,
+				EAD2D1EC281FFD4000BF225D /* CoreLocation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -183,12 +188,15 @@
 				EAD1904227D5B5A4001CF9B5 /* Sources */,
 				EAD1904327D5B5A4001CF9B5 /* Frameworks */,
 				EAD1904427D5B5A4001CF9B5 /* Resources */,
+				EAD2D1EB281FFC0100BF225D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = HowMuchTokyoDome;
+			packageProductDependencies = (
+			);
 			productName = "HowMuchTokyoDome (iOS)";
 			productReference = EAD1904627D5B5A4001CF9B5 /* HowMuchTokyoDome.app */;
 			productType = "com.apple.product-type.application";
@@ -291,8 +299,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAD1905A27D5B5A4001CF9B5 /* Tests_iOSLaunchTests.swift in Sources */,
-				EAD1905827D5B5A4001CF9B5 /* Tests_iOS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +432,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/Alamofire.xcframework/ios-arm64_i386_x86_64-simulator",
+					"$(PROJECT_DIR)/Carthage/Build/Alamofire.xcframework/ios-arm64_armv7",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TokyoDomeInfo.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "";
@@ -460,6 +473,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/Alamofire.xcframework/ios-arm64_i386_x86_64-simulator",
+					"$(PROJECT_DIR)/Carthage/Build/Alamofire.xcframework/ios-arm64_armv7",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TokyoDomeInfo.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "";
